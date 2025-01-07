@@ -61,40 +61,40 @@ class MPGLogisticRegressionModel(nn.Module):
 input_dim = 3  # 3 features (petal length, sepal length, species)
 pytorch_model_mlr = MultipleLinearRegression(input_dim)
 pytorch_model_mlr.load_state_dict(
-    torch.load('/model/pytorch_iris_mlr_model.pkl')
+    torch.load('model/pytorch_iris_mlr_model.pkl')
 )
 pytorch_model_mlr.eval()
-sklearn_model_mlr = joblib.load('/Users/mac/Desktop/Home/Year 5/NLP/NLP-Project/src/P1/PDS-Regression/model/sklearn_iris_mlr_model.pkl')
-scaler_mlr = joblib.load('/model/scaler_mlr_model.pkl')
+sklearn_model_mlr = joblib.load('model/sklearn_iris_mlr_model.pkl')
+scaler_mlr = joblib.load('model/scaler_mlr_model.pkl')
 
 # Species Classification (Binary Logistic Regression)
 pytorch_model_binary = LogisticRegressionModel()
 pytorch_model_binary.load_state_dict(
-    torch.load('/model/pytorch_iris_binary_lgr_model.pkl')
+    torch.load('model/pytorch_iris_binary_lgr_model.pkl')
 )
 pytorch_model_binary.eval()
-sklearn_model_binary = joblib.load('/model/sklearn_iris_binary_lgr_model.pkl')
-scaler_binary = joblib.load('/model/scaler_binary_lgr_model.pkl')
+sklearn_model_binary = joblib.load('model/sklearn_iris_binary_lgr_model.pkl')
+scaler_binary = joblib.load('model/scaler_binary_lgr_model.pkl')
 
 # Penguins Classification (Multi-Class Logistic Regression)
 input_dim_penguins = 6  # Number of input features for penguins classification
 output_dim_penguins = 3  # Number of output classes for penguins classification
 pytorch_model_penguins = MultiClassLogisticRegressionModel(input_dim_penguins, output_dim_penguins)
 pytorch_model_penguins.load_state_dict(
-    torch.load('/model/pytorch_penguins_model.pkl')
+    torch.load('model/pytorch_penguins_model.pkl')
 )
 pytorch_model_penguins.eval()
-sklearn_model_penguins = joblib.load('/model/sklearn_penguins_model.pkl')
-scaler_penguins = joblib.load('/model/scaler_penguins_model.pkl')
+sklearn_model_penguins = joblib.load('model/sklearn_penguins_model.pkl')
+scaler_penguins = joblib.load('model/scaler_penguins_model.pkl')
 
 # MPG Classification (Binary Logistic Regression)
 pytorch_model_mpg = MPGLogisticRegressionModel()
 pytorch_model_mpg.load_state_dict(
-    torch.load('/model/pytorch_mpg_model.pkl')
+    torch.load('model/pytorch_mpg_model.pkl')
 )
 pytorch_model_mpg.eval()
-sklearn_model_mpg = joblib.load('/model/sklearn_mpg_model.pkl')
-scaler_mpg = joblib.load('/model/scaler_mpg_model.pkl')
+sklearn_model_mpg = joblib.load('model/sklearn_mpg_model.pkl')
+scaler_mpg = joblib.load('model/scaler_mpg_model.pkl')
 
 
 # Streamlit UI
@@ -187,13 +187,13 @@ elif problem_choice == '🐧 Penguins Classification':
         species = ['Adelie', 'Chinstrap', 'Gentoo']
         if species[prediction] == 'Adelie':
             st.write(f'🐧 The penguin is predicted to be: {species[prediction]}')
-            st.image('/img/adelie_pen.jpeg', width=500)
+            st.image('img/adelie_pen.jpeg', width=500)
         elif species[prediction] == 'Chinstrap':
             st.write(f'🐧 The penguin is predicted to be: {species[prediction]}')
-            st.image('/img/chinstrap_pen.jpeg', width=500)
+            st.image('img/chinstrap_pen.jpeg', width=500)
         else:
             st.write(f'🐧 The penguin is predicted to be: {species[prediction]}')
-            st.image('/img/gentoo_pen.jpeg', width=500)
+            st.image('img/gentoo_pen.jpeg', width=500)
 
 elif problem_choice == '🚗 MPG Binary Logistic Regression':
     st.write('Enter the details of the car to classify its MPG.')
